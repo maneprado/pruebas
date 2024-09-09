@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cuestionario Interactivo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .quiz-container {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            margin-bottom: 20px;
+        }
+        .question {
+            margin-bottom: 15px;
+        }
+        .question p {
+            margin: 0;
+        }
+        .choices {
+            list-style-type: none;
+            padding: 0;
+        }
+        .choices li {
+            margin-bottom: 10px;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="quiz-container">
+        <h2>Cuestionario Interactivo</h2>
+        <div class="question">
+            <p>¿Cuál es la capital de Francia?</p>
+            <ul class="choices">
+                <li><input type="radio" name="q1" value="0"> Berlín</li>
+                <li><input type="radio" name="q1" value="0"> Madrid</li>
+                <li><input type="radio" name="q1" value="1"> París</li>
+                <li><input type="radio" name="q1" value="0"> Roma</li>
+            </ul>
+        </div>
+        <button onclick="checkAnswer()">Enviar</button>
+        <p id="result"></p>
+    </div>
+
+    <script>
+        function checkAnswer() {
+            const choices = document.getElementsByName('q1');
+            let selectedValue;
+            for (const choice of choices) {
+                if (choice.checked) {
+                    selectedValue = choice.value;
+                    break;
+                }
+            }
+            const result = document.getElementById('result');
+            if (selectedValue === "1") {
+                result.textContent = "¡Correcto!";
+                result.style.color = "green";
+            } else {
+                result.textContent = "Incorrecto, la respuesta es París.";
+                result.style.color = "red";
+            }
+        }
+    </script>
+</body>
+</html>
